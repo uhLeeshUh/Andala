@@ -12,7 +12,7 @@ Symmetry is a drawing web application which allows users to create beautiful, sy
 * A directions sidebar will be present
 
 ## Wireframe of Symmetry Design
-The cells outlined in green show where the user click to start and stop the drawing. Cells 2 and 3 were moused over which triggered their symmetric cells across the Y axis to also render in purple (the user's chosen color).
+The cells outlined in green show where the user clicked to start and stop the drawing. Cells 2 and 3 were moused over which triggered their symmetric cells across the Y axis to also render in purple (the user's chosen color).
 
 ![Symmetry Wireframe](https://github.com/AliciaUnderhill/Symmetry/blob/master/images/Symmetry_wireframe.png)
 
@@ -30,6 +30,14 @@ In addition to the entry file, the project will include the following React comp
 ## Implementation Timeline
 
 ### Day 1, Wed:
+* Build the starting grid, render it in the browser
+* Have cells change color when moused over
+* Have cells change color beginning and ending with a user click
+* Figure out how to assign cells immutable coordinates
+* Figure out a script that selects DOM elements based on their relation to (1) the focal line and (2) the moused over cell
+
+-------
+
 * Finalize needed component hierarchy
 * Develop gameplan for how to render symmetric cells upon mousing over the first in a symmetric pair
 * Build `App` and `Grid` component skeletons and render them in the browser
