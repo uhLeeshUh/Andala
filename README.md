@@ -14,8 +14,7 @@ Symmetry is a drawing web application which allows users to create beautiful, sy
 ## Wireframe of Symmetry Design
 The cells outlined in green show where the user click to start and stop the drawing. Cells 2 and 3 were moused over which triggered their symmetric cells across the Y axis to also render in purple (the user's chosen color).
 
-
-
+![Symmetry Wireframe](https://github.com/AliciaUnderhill/Symmetry/blob/master/images/Symmetry_wireframe.png)
 
 ## Technologies Used
 This app will employ Javascript and React to manage intelligent cell rendering.
