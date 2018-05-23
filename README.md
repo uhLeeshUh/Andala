@@ -1,4 +1,4 @@
-# Symmetry
+# Andala
 
 ## About
 Symmetry is a drawing web application which allows users to create beautiful, symmetrical designs.
@@ -37,6 +37,11 @@ In addition to the entry file, the project will include the following React comp
 * Figure out a script that selects DOM elements based on their relation to (1) the focal line and (2) the moused over cell
 
 -------
+#NOTES:
+* Include a button for "done", aka grid lines of all blank cells go away
+* Somehow highlight the axis of symmetry as user is drawing, and it goes away when user selects a new axis or clicks the done button
+* Maybe can add on filters at the end?
+
 
 * Finalize needed component hierarchy
 * Develop gameplan for how to render symmetric cells upon mousing over the first in a symmetric pair
