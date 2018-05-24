@@ -80,78 +80,43 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./grid */ "./js/grid.js");
+/* harmony import */ var _canvas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./canvas */ "./js/canvas.js");
+// import Grid from './grid';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const grid = new _grid__WEBPACK_IMPORTED_MODULE_0__["default"]();
-  grid.buildGrid();
+  // const grid = new Grid();
+  // grid.buildGrid();
+
+  const canvas = new _canvas__WEBPACK_IMPORTED_MODULE_0__["default"]('andala-canvas');
+  // canvas.setupCanvas();
 
 });
 
 
 /***/ }),
 
-/***/ "./js/grid.js":
-/*!********************!*\
-  !*** ./js/grid.js ***!
-  \********************/
+/***/ "./js/canvas.js":
+/*!**********************!*\
+  !*** ./js/canvas.js ***!
+  \**********************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-class Grid {
-  constructor(){
-    this.colorChangeOn = false;
-    this.axisCell = []; //this should be reset when user selects a new
-      // symmetry direction at the sidebar, right before they click the grid
-      // to reassign the axis
-
-    this.colorCell = this.colorCell.bind(this);
-    this.toggleColorChangeOn = this.toggleColorChangeOn.bind(this);
-  }
-
-  toggleColorChangeOn(e){
-    if (this.axisCell.length === 0){
-      const clickedCell = e.target;
-      this.axisCell = clickedCell.getAttribute('data-coordinates');
-      // console.log(`axisCell is now ${this.axisCell}`);
-    }
-
-    this.colorChangeOn =
-      this.colorChangeOn === false ? true : false;
-  }
-
-  colorCell(e){
-    if (this.colorChangeOn){
-      const cell = e.target;
-      cell.style.backgroundColor = 'red';
-      cell.style.border = 'none';
-      console.log(cell.getAttribute('data-coordinates'));
-    }
-  }
-
-  buildGrid(){
-    const gridHolder = document.querySelector('.grid-holder');
-    gridHolder.addEventListener('click', this.toggleColorChangeOn);
-    gridHolder.addEventListener('mouseover', this.colorCell);
-
-
-    for (let i = 0; i < 81; i++){
-      for (let j = 0; j < 101; j++){
-        let gridCell = document.createElement('div');
-        gridCell.className = 'grid-cell';
-        gridCell.setAttribute('data-coordinates', `[${i}, ${j}]`)
-        gridHolder.appendChild(gridCell);
-      }
-    }
+class Canvas {
+  constructor(id){
+    const canvas = document.getElementById(id);
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'purple';
+    ctx.fillRect(10, 10, 100, 100);
   }
 
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Grid);
+/* harmony default export */ __webpack_exports__["default"] = (Canvas);
 
 
 /***/ })
