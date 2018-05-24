@@ -42,7 +42,7 @@ In addition to the entry file, the project will include the following React comp
 * Somehow highlight the axis of symmetry as user is drawing, and it goes away when user selects a new axis or clicks the done button
 * Maybe can add on filters at the end?
 * Add an eraser
-* Is there a way to save the drawing?
+* Is there a way to save the drawing? look at toDataUrl
 
 
 * Finalize needed component hierarchy

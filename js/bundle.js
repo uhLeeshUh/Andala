@@ -107,11 +107,57 @@ document.addEventListener('DOMContentLoaded', () => {
 __webpack_require__.r(__webpack_exports__);
 class Canvas {
   constructor(id){
-    const canvas = document.getElementById(id);
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'purple';
-    ctx.fillRect(10, 10, 100, 100);
+    this.canvasElement = document.getElementById(id);
+    this.ctx = this.canvasElement.getContext('2d');
+    this.startingX = 0;
+    this.startingY = 0;
+    this.drawing = false;
+    // this.ctx.fillStyle = 'purple';
+    // this.ctx.fillRect(10, 10, 100, 100);
+    this.drawCurve = this.drawCurve.bind(this);
+
+    this.canvasElement.addEventListener('mousedown', (e) => this.setDrawingParameters('down', e));
+    this.canvasElement.addEventListener('mouseup', (e) => this.setDrawingParameters('up', e));
+    this.canvasElement.addEventListener('mousemove', this.drawCurve);
   }
+
+  drawCurve(e){
+    if (this.drawing){
+      this.ctx.moveTo(this.startingX, this.startingY);
+      this.ctx.lineTo(e.clientX, e.clientY);
+      this.ctx.stroke();
+      this.startingX = e.clientX;
+      this.startingY = e.clientY;
+    }
+  }
+
+  drawSymmetricCurve(){
+
+  }
+
+
+  setDrawingParameters(action, e){
+    switch (action) {
+      case 'down':
+        this.drawing = true;
+        this.startingX = e.clientX;
+        this.startingY = e.clientY;
+        // console.log(`starting coordinates are ${this.startingX}, ${this.startingY}`);
+        return;
+      case 'up':
+        this.drawing = false;
+        // console.log(`now drawing is ${this.drawing}`);
+        return;
+    }
+    //
+    // if (action === 'down'){
+    //   this.drawing = true;
+    //   this.startingX = e.clientX;
+    //   this.startingY = e.clientY;
+    // } else if (){
+
+    }
+
 
 
 }
