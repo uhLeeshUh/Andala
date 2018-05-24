@@ -34,10 +34,15 @@ In addition to the entry file, the project will include the following React comp
 * Have cells change color when moused over
 * Have cells change color beginning and ending with a user click
 * Figure out how to assign cells immutable coordinates
+
+* Figure out a way to assign a line of symmetry
+* Figure out how to trigger symmetric line drawing
+
 * Figure out a script that selects DOM elements based on their relation to (1) the focal line and (2) the moused over cell
 
 -------
 #NOTES:
+* Figure out rotational symmetry with different orders
 * Include a button for "done", aka grid lines of all blank cells go away
 * Somehow highlight the axis of symmetry as user is drawing, and it goes away when user selects a new axis or clicks the done button
 * Maybe can add on filters at the end?
