@@ -5,6 +5,8 @@ class Canvas {
     this.startingX = 0;
     this.startingY = 0;
     this.drawing = false;
+    this.lineWidth = 3;
+    this.strokeStyle = 'red';
     // this.ctx.fillStyle = 'purple';
     // this.ctx.fillRect(10, 10, 100, 100);
     this.drawCurve = this.drawCurve.bind(this);
@@ -18,14 +20,17 @@ class Canvas {
     if (this.drawing){
       this.ctx.moveTo(this.startingX, this.startingY);
       this.ctx.lineTo(e.clientX, e.clientY);
+      this.ctx.lineWidth = this.lineWidth;
+      this.ctx.strokeStyle = this.strokeStyle;
       this.ctx.stroke();
+
       this.startingX = e.clientX;
       this.startingY = e.clientY;
     }
   }
 
   drawSymmetricCurve(){
-
+    //PICK UP HERE!
   }
 
 
@@ -42,12 +47,7 @@ class Canvas {
         // console.log(`now drawing is ${this.drawing}`);
         return;
     }
-    //
-    // if (action === 'down'){
-    //   this.drawing = true;
-    //   this.startingX = e.clientX;
-    //   this.startingY = e.clientY;
-    // } else if (){
+
 
     }
 
