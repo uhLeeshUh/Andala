@@ -41,6 +41,8 @@ In addition to the entry file, the project will include the following React comp
 * Include a button for "done", aka grid lines of all blank cells go away
 * Somehow highlight the axis of symmetry as user is drawing, and it goes away when user selects a new axis or clicks the done button
 * Maybe can add on filters at the end?
+* Add an eraser
+* Is there a way to save the drawing?
 
 
 * Finalize needed component hierarchy
