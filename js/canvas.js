@@ -32,7 +32,7 @@ class Canvas {
   determineDraw(e){
     if (this.drawing){
       this.setCoordinates(e, 'NEXT');
-      //will this be an async problem?
+
       this.startCoordinates.forEach((coordPair, idx) => {
         this.ctx.moveTo(coordPair[0], coordPair[1]);
         this.ctx.lineTo(this.nextCoordinates[idx][0], this.nextCoordinates[idx][1]);
@@ -42,16 +42,6 @@ class Canvas {
 
         this.startCoordinates[idx] = this.nextCoordinates[idx];
       });
-
-      //
-      // this.ctx.moveTo(this.startCoordinates[0][0], this.startCoordinates[0][1]);
-      // this.ctx.lineTo(e.clientX, e.clientY);
-      // this.ctx.lineWidth = this.lineWidth;
-      // this.ctx.strokeStyle = this.strokeStyle;
-      // this.ctx.stroke();
-      //
-      // this.startCoordinates[0][0] = e.clientX;
-      // this.startCoordinates[0][1] = e.clientY;
       }
     }
 
@@ -59,24 +49,30 @@ class Canvas {
     switch (action) {
       case 'DOWN':
         this.drawing = true;
+        debugger
         this.setCoordinates(e, 'START');
         // console.log(`starting coordinates are ${this.startingX}, ${this.startingY}`);
         return;
       case 'UP':
         this.drawing = false;
+        debugger
         // console.log(`now drawing is ${this.drawing}`);
         return;
       }
     }
 
   setCoordinates(e, startOrNext){
+    // let firstPair, symmetricPairX, symmetricPairY, symmetricPair;
     switch(this.symDirection){
       case 'HORIZONTAL':
-        const firstPair = [e.clientX, e.clientY];
-        const symmetricPairX = e.clientX;
-        const symmetricPairY = ((this.axisPoint[1] - e.clientY) * 2) + e.clientY;
-        const symmetricPair = [symmetricPairX, symmetricPairY];
+
+        let { firstPair, symmetricPair } = this.computeAxisSymPairs(e, 'HORIZONTAL');
+        // const firstPair = [e.clientX, e.clientY];
+        // const symmetricPairX = e.clientX;
+        // const symmetricPairY = ((this.axisPoint[1] - e.clientY) * 2) + e.clientY;
+        // const symmetricPair = [symmetricPairX, symmetricPairY];
         if (startOrNext === 'START'){
+          this.startCoordinates = [];
           this.startCoordinates.push(firstPair);
           this.startCoordinates.push(symmetricPair);
         } else {
@@ -84,10 +80,25 @@ class Canvas {
           this.nextCoordinates.push(firstPair);
           this.nextCoordinates.push(symmetricPair);
         }
-        return;
+        break;
       case 'VERTICAL':
-        return;
+        // co firstPair = [e.clientX, e.clientY];
+
+        break;
       case 'RADIAL':
+        break;
+    }
+  }
+
+  computeAxisSymPairs(e, axis){
+    const firstPair = [e.clientX, e.clientY];
+    switch (axis) {
+      case 'HORIZONTAL':
+        let symmetricPairX = e.clientX;
+        let symmetricPairY = ((this.axisPoint[1] - e.clientY) * 2) + e.clientY;
+        let symmetricPair = [symmetricPairX, symmetricPairY];
+        return { firstPair, symmetricPair };
+      case 'VERTICAL':
         return;
     }
   }
