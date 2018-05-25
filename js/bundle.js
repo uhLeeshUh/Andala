@@ -111,7 +111,7 @@ class Canvas {
     this.ctx = this.canvasElement.getContext('2d');
 
     this.axisPoint = [400, 325];
-    this.symDirection = 'HORIZONTAL';
+    this.symDirection = 'VERTICAL';
     this.radialOrder = 0;
 
     this.startCoordinates = [];
@@ -126,14 +126,6 @@ class Canvas {
     this.canvasElement.addEventListener('mouseup', (e) => this.setDrawingParameters('UP', e));
     this.canvasElement.addEventListener('mousemove', this.determineDraw);
 
-    //test for center point
-    // this.ctx.beginPath();
-    // this.ctx.arc(400,325,50,Math.PI * (2/5), Math.PI * (2/5));
-    // this.ctx.fill();
-    // this.ctx.fillRect(this.axisPoint[0], this.axisPoint[1], 1, 1);
-//     ctx.beginPath();
-// ctx.arc(100,75,50,0,2*Math.PI);
-// ctx.stroke();
   }
 
   determineDraw(e){
@@ -156,57 +148,52 @@ class Canvas {
     switch (action) {
       case 'DOWN':
         this.drawing = true;
-        debugger
         this.setCoordinates(e, 'START');
         // console.log(`starting coordinates are ${this.startingX}, ${this.startingY}`);
         return;
       case 'UP':
         this.drawing = false;
-        debugger
         // console.log(`now drawing is ${this.drawing}`);
         return;
       }
     }
 
   setCoordinates(e, startOrNext){
-    // let firstPair, symmetricPairX, symmetricPairY, symmetricPair;
+
+    let firstPair, symmetricPair;
     switch(this.symDirection){
       case 'HORIZONTAL':
-
-        let { firstPair, symmetricPair } = this.computeAxisSymPairs(e, 'HORIZONTAL');
-        // const firstPair = [e.clientX, e.clientY];
-        // const symmetricPairX = e.clientX;
-        // const symmetricPairY = ((this.axisPoint[1] - e.clientY) * 2) + e.clientY;
-        // const symmetricPair = [symmetricPairX, symmetricPairY];
-        if (startOrNext === 'START'){
-          this.startCoordinates = [];
-          this.startCoordinates.push(firstPair);
-          this.startCoordinates.push(symmetricPair);
-        } else {
-          this.nextCoordinates = [];
-          this.nextCoordinates.push(firstPair);
-          this.nextCoordinates.push(symmetricPair);
-        }
+        ({ firstPair, symmetricPair } = this.computeAxisSymPairs(e, 'HORIZONTAL'));
         break;
       case 'VERTICAL':
-        // co firstPair = [e.clientX, e.clientY];
-
+        ({ firstPair, symmetricPair } = this.computeAxisSymPairs(e, 'VERTICAL'));
         break;
       case 'RADIAL':
         break;
+    }
+
+    if (startOrNext === 'START'){
+      this.startCoordinates = [firstPair, symmetricPair];
+    } else {
+      this.nextCoordinates = [firstPair, symmetricPair];
     }
   }
 
   computeAxisSymPairs(e, axis){
     const firstPair = [e.clientX, e.clientY];
+    // console.log(`the clicked pair is ${firstPair}`);
+    let symmetricPairX, symmetricPairY, symmetricPair;
     switch (axis) {
       case 'HORIZONTAL':
-        let symmetricPairX = e.clientX;
-        let symmetricPairY = ((this.axisPoint[1] - e.clientY) * 2) + e.clientY;
-        let symmetricPair = [symmetricPairX, symmetricPairY];
+        symmetricPairX = e.clientX;
+        symmetricPairY = ((this.axisPoint[1] - e.clientY) * 2) + e.clientY;
+        symmetricPair = [symmetricPairX, symmetricPairY];
         return { firstPair, symmetricPair };
       case 'VERTICAL':
-        return;
+        symmetricPairX = ((this.axisPoint[0] - e.clientX) * 2) + e.clientX;
+        symmetricPairY = e.clientY;
+        symmetricPair = [symmetricPairX, symmetricPairY];
+        return { firstPair, symmetricPair };
     }
   }
 
