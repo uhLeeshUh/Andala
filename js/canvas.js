@@ -5,7 +5,7 @@ class Canvas {
 
     this.axisPoint = [400, 325];
     this.symDirection = 'RADIAL';
-    this.radialOrder = 9;
+    this.radialOrder = 12;
 
     this.startCoordinates = [];
     this.nextCoordinates = [];
@@ -102,10 +102,6 @@ class Canvas {
     const pythagoreanSum = Math.pow(xDistance, 2) + Math.pow(yDistance, 2);
     const radius =  Math.sqrt(pythagoreanSum);
 
-    // this.ctx.beginPath();
-    // this.ctx.arc(this.axisPoint[0], this.axisPoint[1],radius,0,2*Math.PI);
-    // this.ctx.stroke();
-    // debugger
     let theta;
     if (xDistance >= 0 && yDistance >= 0){
       theta = Math.atan(yDistance / xDistance);
@@ -117,7 +113,6 @@ class Canvas {
       theta = (2 * Math.PI) - Math.acos(xDistance / radius);
     }
 
-    // const theta = Math.atan(yDistance / xDistance);
     const sliceSizeRadians = (2 * Math.PI) / this.radialOrder;
 
     const thetaPrimes = [];
@@ -127,29 +122,10 @@ class Canvas {
       thetaPrimes.push(theta + (sliceSizeRadians * i));
     }
 
-    console.log(theta);
 
     thetaPrimes.forEach(angle => {
-      let canvasX;
-      let canvasY;
-      // if (angle < (Math.PI / 2)){
-        canvasX = (radius * Math.cos(angle)) + this.axisPoint[0];
-        canvasY = this.axisPoint[1] - (radius * Math.sin(angle));
-      //   console.log(`quad 1 canvasY: ${canvasY}`);
-      // } else if (angle <= Math.PI){
-      //   canvasX = (radius * Math.cos(angle)) + this.axisPoint[0];
-      //   canvasY = this.axisPoint[1] - (radius * Math.sin(angle));
-      //   console.log(`quad 2 canvasY: ${canvasY}`);
-      // } else if (angle <= 3 * Math.PI / 2){
-      //   canvasX = (radius * Math.cos(angle)) + this.axisPoint[0];
-      //   canvasY = this.axisPoint[1] - (radius * Math.sin(angle));
-      //   console.log(`quad 3 canvasY: ${canvasY}`);
-      // } else if (angle > 3 * Math.PI / 2){
-      //   canvasX = (radius * Math.cos(angle)) + this.axisPoint[0];
-      //   canvasY = this.axisPoint[1] - (radius * Math.sin(angle));
-      //   console.log(`quad 4 canvasY: ${canvasY}`);
-      // }
-
+      const canvasX = (radius * Math.cos(angle)) + this.axisPoint[0];
+      const canvasY = this.axisPoint[1] - (radius * Math.sin(angle));
       symmetricPairSet.push([canvasX, canvasY]);
     });
     return { symmetricPairSet };
