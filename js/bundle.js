@@ -160,40 +160,43 @@ class Canvas {
 
   setCoordinates(e, startOrNext){
 
-    let firstPair, symmetricPair;
+    let firstPair, symmetricPairSet;
     switch(this.symDirection){
       case 'HORIZONTAL':
-        ({ firstPair, symmetricPair } = this.computeAxisSymPairs(e, 'HORIZONTAL'));
+        ({ firstPair, symmetricPairSet } = this.computeAxisSymPairs(e, 'HORIZONTAL'));
         break;
       case 'VERTICAL':
-        ({ firstPair, symmetricPair } = this.computeAxisSymPairs(e, 'VERTICAL'));
+        ({ firstPair, symmetricPairSet } = this.computeAxisSymPairs(e, 'VERTICAL'));
         break;
       case 'RADIAL':
+
         break;
     }
 
     if (startOrNext === 'START'){
-      this.startCoordinates = [firstPair, symmetricPair];
+      this.startCoordinates = [firstPair].concat(symmetricPairSet);
+      // this.startCoordinates.push(symmetricPairSet);
     } else {
-      this.nextCoordinates = [firstPair, symmetricPair];
+      this.nextCoordinates = [firstPair].concat(symmetricPairSet);
+      // this.nextCoordinates.push(symmetricPairSet);
     }
   }
 
   computeAxisSymPairs(e, axis){
     const firstPair = [e.clientX, e.clientY];
     // console.log(`the clicked pair is ${firstPair}`);
-    let symmetricPairX, symmetricPairY, symmetricPair;
+    let symmetricPairX, symmetricPairY, symmetricPairSet;
     switch (axis) {
       case 'HORIZONTAL':
         symmetricPairX = e.clientX;
         symmetricPairY = ((this.axisPoint[1] - e.clientY) * 2) + e.clientY;
-        symmetricPair = [symmetricPairX, symmetricPairY];
-        return { firstPair, symmetricPair };
+        symmetricPairSet = [[symmetricPairX, symmetricPairY]];
+        return { firstPair, symmetricPairSet };
       case 'VERTICAL':
         symmetricPairX = ((this.axisPoint[0] - e.clientX) * 2) + e.clientX;
         symmetricPairY = e.clientY;
-        symmetricPair = [symmetricPairX, symmetricPairY];
-        return { firstPair, symmetricPair };
+        symmetricPairSet = [[symmetricPairX, symmetricPairY]];
+        return { firstPair, symmetricPairSet };
     }
   }
 
