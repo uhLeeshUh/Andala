@@ -40,6 +40,16 @@ In addition to the entry file, the project will include the following React comp
 
 * Figure out a script that selects DOM elements based on their relation to (1) the focal line and (2) the moused over cell
 
+* user will be able to toggle between line of symmetry or radial
+* start with doing horizontal vs. vertical symmetry then implement radial
+
+* user clicks, go to setDrawingParameters function that based on symmetry type, sets this.startCoordinates variable (aka adds start coordinates X number of times)
+* then when user moves the mouse, triggers this.determineDraw event listener, sets this.nextCoordinates array with all the new positions
+* then simply iterate over this.startCoordinates paired with this.nextCoordinates to synchronously draw in tandem
+
+for normal symmetry:
+* this.symDirection will dictate calculating this.nextCoordinates based on relation to either X or Y axis
+
 -------
 #NOTES:
 * Figure out rotational symmetry with different orders
