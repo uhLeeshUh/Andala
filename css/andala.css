@@ -38,7 +38,7 @@ h3{
 }
 
 .right-side-bar-selection button{
-  margin-left: 20%;
+  margin-left: 10%;
   margin-right: 20%;
   font-family: 'Cormorant', serif;
   font-size: 18px;
@@ -59,6 +59,9 @@ h3{
   /* margin-right: 50px;
   margin-left: 50px; */
   width: 25%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
   /* margin-left: auto; */
   /* margin-right: 0; */
   /* padding-left: 15%; */
@@ -66,8 +69,13 @@ h3{
 }
 
 .left-side-bar-selection div{
-  margin-right: 20%;
+  margin-right: 10%;
   margin-left: 20%;
+  justify-content: space-between;
+}
+
+.left-side-bar-selection p{
+  width: 130px;
 }
 
 .drawing-color{
@@ -78,7 +86,7 @@ h3{
   display: flex;
   flex-wrap: wrap;
   height: 50px;
-  width: 145px;
+  width: 120px;
   /* margin-left: 15px; */
 }
 
@@ -159,5 +167,40 @@ h3{
   height: 20px;
   width: 20px;
   background-color: gray;
+  border-radius: 3px;
+}
+
+.canvas-background-color{
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.canvas-background-color ul{
+  display: flex;
+  width: 120px;
+}
+
+.canvas-background-color li{
+  box-sizing: border-box;
+  margin: 2px;
+}
+
+.canvas-background-color li:hover{
+  opacity: 0.75;
+}
+
+#white-background{
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border-radius: 3px;
+  border: 0.5px solid gray;
+}
+
+#black-background{
+  height: 20px;
+  width: 20px;
+  background-color: black;
   border-radius: 3px;
 }
