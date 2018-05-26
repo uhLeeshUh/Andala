@@ -1,6 +1,7 @@
 body{
   display: flex;
   align-items: stretch;
+  margin-top: 20px;
 }
 
 .canvas{
@@ -20,6 +21,7 @@ h1{
   font-size: 76px;
   text-align: center;
   font-family: 'Alegreya Sans', sans-serif;
+  margin-bottom: -7px;
 }
 
 h3{
@@ -74,8 +76,14 @@ h3{
   justify-content: space-between;
 }
 
+.draw-instructions{
+  margin-bottom: 30px;
+  font-size: 19px;
+}
+
 .left-side-bar-selection p{
   width: 130px;
+  margin-right: 15px;
 }
 
 .drawing-color{
@@ -85,7 +93,7 @@ h3{
 .drawing-color ul{
   display: flex;
   flex-wrap: wrap;
-  height: 50px;
+  /* height: 50px; */
   width: 120px;
   /* margin-left: 15px; */
 }
@@ -93,58 +101,63 @@ h3{
 .drawing-color li{
   box-sizing: border-box;
   margin: 2px;
+  border: 1px solid gray;
 }
 
 .drawing-color li:hover{
   opacity: 0.75;
 }
 
+li.drawing-color-selected{
+  border: 3px dashed #5882FA;
+}
+
 #red-pen{
   height: 20px;
   width: 20px;
-  background-color: red;
+  background-color: #FA5858;
   border-radius: 3px;
 }
 
 #orange-pen{
   height: 20px;
   width: 20px;
-  background-color: orange;
+  background-color: #FACC2E;
   border-radius: 3px;
 }
 
 #yellow-pen{
   height: 20px;
   width: 20px;
-  background-color: yellow;
+  background-color: #F4FA58;
   border-radius: 3px;
 }
 
 #green-pen{
   height: 20px;
   width: 20px;
-  background-color: green;
+  background-color: #81F79F;
   border-radius: 3px;
 }
 
 #blue-pen{
   height: 20px;
   width: 20px;
-  background-color: blue;
+  background-color: #81F7F3;
   border-radius: 3px;
 }
 
 #purple-pen{
   height: 20px;
   width: 20px;
-  background-color: purple;
+  background-color: #DA81F5;
   border-radius: 3px;
 }
 
 #pink-pen{
   height: 20px;
   width: 20px;
-  background-color: pink;
+  background-color: #F781F3;
   border-radius: 3px;
 }
 
@@ -160,20 +173,20 @@ h3{
   width: 20px;
   background-color: white;
   border-radius: 3px;
-  border: 0.5px solid gray;
+  /* border: 0.5px solid gray; */
 }
 
 #gray-pen{
   height: 20px;
   width: 20px;
-  background-color: gray;
+  background-color: #A4A4A4;
   border-radius: 3px;
 }
 
 .canvas-background-color{
   display: flex;
-  align-items: flex-start;
-  margin-top: 20px;
+  /* align-items: flex-start; */
+  margin-top: 30px;
 }
 
 .canvas-background-color ul{
@@ -184,10 +197,15 @@ h3{
 .canvas-background-color li{
   box-sizing: border-box;
   margin: 2px;
+  border: 1px solid gray;
 }
 
 .canvas-background-color li:hover{
   opacity: 0.75;
+}
+
+li.canvas-background-selected{
+  border: 3px dashed #5882FA;
 }
 
 #white-background{
@@ -195,7 +213,7 @@ h3{
   width: 20px;
   background-color: white;
   border-radius: 3px;
-  border: 0.5px solid gray;
+  /* border: 0.5px solid gray; */
 }
 
 #black-background{
@@ -203,4 +221,34 @@ h3{
   width: 20px;
   background-color: black;
   border-radius: 3px;
+}
+
+.canvas-symmetry{
+  display: flex;
+  margin-top: 30px;
+}
+
+.canvas-symmetry input{
+  width: 20px;
+}
+
+.canvas-symmetry ul{
+  width: 120px;
+}
+
+.canvas-symmetry li{
+  margin: 4px 0;
+}
+
+.canvas-symmetry li:hover{
+  opacity: 0.75;
+}
+
+.canvas-symmetry label{
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.symmetry-selected{
+  text-decoration: underline;
 }
