@@ -113,63 +113,63 @@ li.drawing-color-selected{
   border: 3px dashed #5882FA;
 }
 
-#red-pen{
+#red-brush{
   height: 20px;
   width: 20px;
   background-color: #FA5858;
   border-radius: 3px;
 }
 
-#orange-pen{
+#orange-brush{
   height: 20px;
   width: 20px;
   background-color: #FACC2E;
   border-radius: 3px;
 }
 
-#yellow-pen{
+#yellow-brush{
   height: 20px;
   width: 20px;
   background-color: #F4FA58;
   border-radius: 3px;
 }
 
-#green-pen{
+#green-brush{
   height: 20px;
   width: 20px;
   background-color: #81F79F;
   border-radius: 3px;
 }
 
-#blue-pen{
+#blue-brush{
   height: 20px;
   width: 20px;
   background-color: #81F7F3;
   border-radius: 3px;
 }
 
-#purple-pen{
+#purple-brush{
   height: 20px;
   width: 20px;
   background-color: #DA81F5;
   border-radius: 3px;
 }
 
-#pink-pen{
+#pink-brush{
   height: 20px;
   width: 20px;
   background-color: #F781F3;
   border-radius: 3px;
 }
 
-#black-pen{
+#black-brush{
   height: 20px;
   width: 20px;
   background-color: black;
   border-radius: 3px;
 }
 
-#white-pen{
+#white-brush{
   height: 20px;
   width: 20px;
   background-color: white;
@@ -177,7 +177,7 @@ li.drawing-color-selected{
   /* border: 0.5px solid gray; */
 }
 
-#gray-pen{
+#gray-brush{
   height: 20px;
   width: 20px;
   background-color: #A4A4A4;

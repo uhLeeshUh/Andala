@@ -83,12 +83,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _canvas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./canvas */ "./js/canvas.js");
 // import Grid from './grid';
 
+// import * as userInputs from './user_inputs';
 
 document.addEventListener('DOMContentLoaded', () => {
   // const grid = new Grid();
   // grid.buildGrid();
 
   const canvas = new _canvas__WEBPACK_IMPORTED_MODULE_0__["default"]('andala-canvas');
+  // userInputs.setPenColorsListener();
+  // const toggleUserInputs = new userInputs();
   // canvas.setupCanvas();
 
 });
@@ -119,23 +122,44 @@ class Canvas {
     this.nextCoordinates = [];
     this.drawing = false;
     this.lineWidth = parseInt(document.querySelector('.brush-size-selected').dataset.brushsize);
-    // debugger
     this.strokeStyle = document.querySelector('.drawing-color-selected').dataset.color;
-
-    this.determineDraw = this.determineDraw.bind(this);
 
     this.canvasElement.addEventListener('mousedown', (e) => this.setDrawingParameters('DOWN', e));
     this.canvasElement.addEventListener('mouseup', (e) => this.setDrawingParameters('UP', e));
     this.canvasElement.addEventListener('mousemove', this.determineDraw);
 
+    debugger
+    this.setUserInputListeners();
+
+    this.determineDraw = this.determineDraw.bind(this);
+    this.toggleBrushColors = this.toggleBrushColors.bind(this);
   }
+
+  setUserInputListeners(){
+    debugger
+    const brushColors = document.querySelector('.brush-colors');
+    brushColors.addEventListener("click", this.toggleBrushColors);
+
+    // const canvasBackground =
+  }
+
+  toggleBrushColors(e){
+    debugger
+    const previousBrush = document.querySelector('.drawing-color-selected');
+    previousBrush.className = "";
+    e.target.className = 'drawing-color-selected';
+    debugger
+    this.strokeStyle = e.target.dataset.color;
+  }
+
+
 
   determineDraw(e){
     if (this.drawing){
       this.setCoordinates(e, 'NEXT');
 
       this.startCoordinates.forEach((coordPair, idx) => {
-        debugger
+        // debugger
         this.ctx.moveTo(coordPair[0], coordPair[1]);
         this.ctx.lineTo(this.nextCoordinates[idx][0], this.nextCoordinates[idx][1]);
         this.ctx.lineWidth = this.lineWidth;
@@ -148,11 +172,11 @@ class Canvas {
     }
 
   setDrawingParameters(action, e){
-    console.log(`mouseclick was at ${e.clientX}, ${e.clientY}`);
-    console.log(`mouseclick was at ${e.clientX}, ${e.clientY}`);
-    this.ctx.rect(325,325,100,100);
-    this.ctx.stroke();
-    debugger
+    // debugger
+    // console.log(`mouseclick was at ${e.clientX}, ${e.clientY}`);
+    // console.log(`mouseclick was at ${e.clientX}, ${e.clientY}`);
+    // this.ctx.rect(325,325,100,100);
+    // this.ctx.stroke();
     switch (action) {
       case 'DOWN':
         this.drawing = true;
