@@ -120,7 +120,7 @@ class Canvas {
     this.drawing = false;
     this.lineWidth = parseInt(document.querySelector('.brush-size-selected').dataset.brushsize);
     // debugger
-    this.strokeStyle = 'red';
+    this.strokeStyle = document.querySelector('.drawing-color-selected').dataset.color;
 
     this.determineDraw = this.determineDraw.bind(this);
 
