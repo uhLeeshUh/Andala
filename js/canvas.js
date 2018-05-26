@@ -3,9 +3,10 @@ class Canvas {
     this.canvasElement = document.getElementById(id);
     this.ctx = this.canvasElement.getContext('2d');
 
-    this.axisPoint = [400, 325];
+    // this.axisPoint = [400, 325];
+    this.axisPoint = [325, 325];
     this.symDirection = 'RADIAL';
-    this.radialOrder = 15;
+    this.radialOrder = 3;
 
     this.startCoordinates = [];
     this.nextCoordinates = [];
@@ -38,6 +39,10 @@ class Canvas {
     }
 
   setDrawingParameters(action, e){
+    console.log(`mouseclick was at ${e.clientX}, ${e.clientY}`);
+    console.log(`mouseclick was at ${e.clientX}, ${e.clientY}`);
+    this.ctx.rect(325,325,100,100);
+    this.ctx.stroke();
     switch (action) {
       case 'DOWN':
         this.drawing = true;

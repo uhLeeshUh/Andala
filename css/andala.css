@@ -1,0 +1,163 @@
+body{
+  display: flex;
+  align-items: stretch;
+}
+
+.canvas{
+  margin-right: 50px;
+  width: 50%;
+  margin: auto;
+}
+
+#andala-canvas{
+  border: 1px solid black;
+  border-radius: 30px;
+  margin: auto;
+  display: block;
+}
+
+h1{
+  font-size: 76px;
+  text-align: center;
+  font-family: 'Alegreya Sans', sans-serif;
+}
+
+h3{
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: 'Cormorant', serif;
+}
+
+/* right sidebar */
+
+.right-side-bar-selection{
+  margin-top: 125px;
+  /* margin-left: 35px; */
+  width: 25%;
+}
+
+.right-side-bar-selection button{
+  margin-left: 20%;
+  margin-right: 20%;
+  font-family: 'Cormorant', serif;
+  font-size: 18px;
+}
+
+.canvas-reset-button{
+  height: 35px;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+/* left sidebar */
+
+.left-side-bar-selection{
+  margin-top: 125px;
+  font-family: 'Cormorant', serif;
+  font-size: 18px;
+  /* margin-right: 50px;
+  margin-left: 50px; */
+  width: 25%;
+  /* margin-left: auto; */
+  /* margin-right: 0; */
+  /* padding-left: 15%; */
+  /* padding-left: 30px; */
+}
+
+.left-side-bar-selection div{
+  margin-right: 20%;
+  margin-left: 20%;
+}
+
+.drawing-color{
+  display: flex;
+}
+
+.drawing-color ul{
+  display: flex;
+  flex-wrap: wrap;
+  height: 50px;
+  width: 145px;
+  /* margin-left: 15px; */
+}
+
+.drawing-color li{
+  box-sizing: border-box;
+  margin: 2px;
+}
+
+.drawing-color li:hover{
+  opacity: 0.75;
+}
+
+#red-pen{
+  height: 20px;
+  width: 20px;
+  background-color: red;
+  border-radius: 3px;
+}
+
+#orange-pen{
+  height: 20px;
+  width: 20px;
+  background-color: orange;
+  border-radius: 3px;
+}
+
+#yellow-pen{
+  height: 20px;
+  width: 20px;
+  background-color: yellow;
+  border-radius: 3px;
+}
+
+#green-pen{
+  height: 20px;
+  width: 20px;
+  background-color: green;
+  border-radius: 3px;
+}
+
+#blue-pen{
+  height: 20px;
+  width: 20px;
+  background-color: blue;
+  border-radius: 3px;
+}
+
+#purple-pen{
+  height: 20px;
+  width: 20px;
+  background-color: purple;
+  border-radius: 3px;
+}
+
+#pink-pen{
+  height: 20px;
+  width: 20px;
+  background-color: pink;
+  border-radius: 3px;
+}
+
+#black-pen{
+  height: 20px;
+  width: 20px;
+  background-color: black;
+  border-radius: 3px;
+}
+
+#white-pen{
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border-radius: 3px;
+  border: 0.5px solid gray;
+}
+
+#gray-pen{
+  height: 20px;
+  width: 20px;
+  background-color: gray;
+  border-radius: 3px;
+}

@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <title>andala</title>
     <link rel="stylesheet" type="text/css" href="./css/reset.css">
-    <link rel="stylesheet" type="text/css" href="./css/grid.css">
+    <link rel="stylesheet" type="text/css" href="./css/andala.css">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Cormorant:500" rel="stylesheet">
     <script src="./js/bundle.js"></script>
   </head>
   <body>
-    <section class="side-bar-selection">
+    <section class="left-side-bar-selection">
       <div class="drawing-color">
         <p>Your pen color</p>
         <ul>
@@ -45,7 +46,15 @@
         </ul>
       </div>
     </section>
-    <canvas id="andala-canvas" width="800" height="650"></canvas>
 
+    <section class="canvas">
+      <h1>andala</h1>
+      <h3>Click anywhere and draw freely.</h3>
+      <canvas id="andala-canvas" width="650" height="650"></canvas>
+    </section>
+
+    <section class="right-side-bar-selection">
+      <button class="canvas-reset-button" type="button" name="button">Clear your canvas</button>
+    </section>
   </body>
 </html>
