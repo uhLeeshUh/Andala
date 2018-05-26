@@ -112,7 +112,7 @@ class Canvas {
 
     this.axisPoint = [400, 325];
     this.symDirection = 'RADIAL';
-    this.radialOrder = 12;
+    this.radialOrder = 15;
 
     this.startCoordinates = [];
     this.nextCoordinates = [];

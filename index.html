@@ -2,14 +2,49 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Symmetry</title>
+    <title>andala</title>
     <link rel="stylesheet" type="text/css" href="./css/reset.css">
     <link rel="stylesheet" type="text/css" href="./css/grid.css">
     <script src="./js/bundle.js"></script>
   </head>
   <body>
-    <!-- <section class="grid-holder">
-    </section> -->
+    <section class="side-bar-selection">
+      <div class="drawing-color">
+        <p>Your pen color</p>
+        <ul>
+          <li id="red-pen" data-color="red" class=""></li>
+          <li id="orange-pen" data-color="orange" class=""></li>
+          <li id="yellow-pen" data-color="yellow" class=""></li>
+          <li id="green-pen" data-color="green" class=""></li>
+          <li id="blue-pen" data-color="blue" class=""></li>
+          <li id="purple-pen" data-color="purple" class=""></li>
+          <li id="pink-pen" data-color="pink" class=""></li>
+          <li id="black-pen" data-color="black" class="drawing-color-selected"></li>
+          <li id="white-pen" data-color="white" class=""></li>
+          <li id="gray-pen" data-color="gray" class=""></li>
+        </ul>
+      </div>
+
+      <div class="canvas-background-color">
+        <p>Your background color</p>
+        <ul>
+          <li id="white-background" data-background="white" class="canvas-background-selected"></li>
+          <li id="black-background" data-background="black" class=""></li>
+        </ul>
+      </div>
+
+      <div class="canvas-symmetry">
+        <p>Your desired symmetry</p>
+        <ul>
+          <li data-symmetry="radial" class="symmetry-selected">Radial</li>
+            <label>Split by
+              <input type="text" name="radial-order" value="7">
+            </label>
+          <li data-symmetry="horizontal" class="">Horizontal</li>
+          <li data-symmetry="vertical" class="">Vertical</li>
+        </ul>
+      </div>
+    </section>
     <canvas id="andala-canvas" width="800" height="650"></canvas>
 
   </body>
