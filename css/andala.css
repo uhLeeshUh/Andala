@@ -1,7 +1,7 @@
 body{
   display: flex;
   align-items: stretch;
-  margin-top: 20px;
+  margin-top: 20px 0;
 }
 
 .canvas{
@@ -77,7 +77,7 @@ h3{
 }
 
 .draw-instructions{
-  margin-bottom: 30px;
+  margin-bottom: 45px;
   font-size: 19px;
 }
 
@@ -88,6 +88,7 @@ h3{
 
 .drawing-color{
   display: flex;
+  /* margin-top: 30px; */
 }
 
 .drawing-color ul{
@@ -223,6 +224,31 @@ li.canvas-background-selected{
   border-radius: 3px;
 }
 
+.brush-size{
+  display: flex;
+  margin-top: 30px;
+}
+
+.brush-size ul{
+  width: 120px;
+}
+
+.brush-size li{
+  margin-bottom: 4px;
+}
+
+.brush-size li:last-of-type{
+  margin-bottom: 0;
+}
+
+.brush-size li:hover{
+  opacity: 0.75;
+}
+
+.brush-size-selected{
+  text-decoration: underline;
+}
+
 .canvas-symmetry{
   display: flex;
   margin-top: 30px;
@@ -237,7 +263,11 @@ li.canvas-background-selected{
 }
 
 .canvas-symmetry li{
-  margin: 4px 0;
+  margin-bottom: 4px;
+}
+
+.canvas-symmetry li:last-of-type{
+  margin-bottom: 0;
 }
 
 .canvas-symmetry li:hover{

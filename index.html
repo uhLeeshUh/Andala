@@ -37,15 +37,24 @@
         </ul>
       </div>
 
+      <div class="brush-size">
+        <p>Your brush size</p>
+        <ul>
+          <li class="" data-brushsize="1">Thin</li>
+          <li class="" data-brushsize="3">Medium</li>
+          <li class="brush-size-selected" data-brushsize="8">Thick</li>
+        </ul>
+      </div>
+
       <div class="canvas-symmetry">
         <p>Your desired symmetry</p>
         <ul>
-          <li data-symmetry="radial" class="symmetry-selected">Radial</li>
+          <li data-symmetry="RADIAL" class="symmetry-selected">Radial</li>
             <label>Split by
-              <input type="text" name="radial-order" value="7">
+              <input id="radial-order" type="text" name="radial-order" value="7">
             </label>
-          <li data-symmetry="horizontal" class="">Horizontal</li>
-          <li data-symmetry="vertical" class="">Vertical</li>
+          <li data-symmetry="HORIZONTAL" class="">Horizontal</li>
+          <li data-symmetry="VERTICAL" class="">Vertical</li>
         </ul>
       </div>
     </section>

@@ -112,13 +112,14 @@ class Canvas {
 
     // this.axisPoint = [400, 325];
     this.axisPoint = [325, 325];
-    this.symDirection = 'RADIAL';
-    this.radialOrder = 3;
+    this.symDirection = document.querySelector('.symmetry-selected').dataset.symmetry;
+    this.radialOrder = parseInt(document.getElementById('radial-order').value);
 
     this.startCoordinates = [];
     this.nextCoordinates = [];
     this.drawing = false;
-    this.lineWidth = 3;
+    this.lineWidth = parseInt(document.querySelector('.brush-size-selected').dataset.brushsize);
+    // debugger
     this.strokeStyle = 'red';
 
     this.determineDraw = this.determineDraw.bind(this);
@@ -134,6 +135,7 @@ class Canvas {
       this.setCoordinates(e, 'NEXT');
 
       this.startCoordinates.forEach((coordPair, idx) => {
+        debugger
         this.ctx.moveTo(coordPair[0], coordPair[1]);
         this.ctx.lineTo(this.nextCoordinates[idx][0], this.nextCoordinates[idx][1]);
         this.ctx.lineWidth = this.lineWidth;
@@ -150,6 +152,7 @@ class Canvas {
     console.log(`mouseclick was at ${e.clientX}, ${e.clientY}`);
     this.ctx.rect(325,325,100,100);
     this.ctx.stroke();
+    debugger
     switch (action) {
       case 'DOWN':
         this.drawing = true;
