@@ -46,9 +46,9 @@ h3{
   font-size: 18px;
 }
 
-.canvas-reset-button{
+#canvas-reset-button{
   height: 35px;
-  font-size: 12px;
+  font-size: 17px;
   border-radius: 10px;
 }
 

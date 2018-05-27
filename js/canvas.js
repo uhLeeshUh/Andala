@@ -27,6 +27,7 @@ class Canvas {
     this.toggleBrushSize = this.toggleBrushSize.bind(this);
     this.toggleSymmetryChoice = this.toggleSymmetryChoice.bind(this);
     this.changeRadialOrder = this.changeRadialOrder.bind(this);
+    this.clearCanvas = this.clearCanvas.bind(this);
 
     this.canvasElement.addEventListener('mousedown', (e) => this.setDrawingParameters('DOWN', e));
     this.canvasElement.addEventListener('mouseup', (e) => this.setDrawingParameters('UP', e));
@@ -52,6 +53,9 @@ class Canvas {
 
     const radialOrder = document.getElementById('radial-order');
     radialOrder.addEventListener("input", this.changeRadialOrder);
+
+    const clearCanvasButton = document.getElementById('canvas-reset-button');
+    clearCanvasButton.addEventListener("click", this.clearCanvas);
 
   }
 
@@ -87,6 +91,10 @@ class Canvas {
 
   changeRadialOrder(e){
     this.radialOrder = parseInt(e.target.value);
+  }
+
+  clearCanvas(e){
+    this.ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
   }
 
 
