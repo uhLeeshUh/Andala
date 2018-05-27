@@ -79,6 +79,6 @@ computeRadialSymPairs(e){
 ## Future Features
 In the future, I plan to add the following features:
 
-* User may choose a focal point which is not the origin
 * User may customize canvas size
+* User may undo a previous action
 * User may draw with circles and other shapes in addition to line drawing
