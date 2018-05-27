@@ -169,6 +169,7 @@ class Canvas {
       this.startCoordinates.forEach((coordPair, idx) => {
         console.log('now were drawing the line');
         // debugger
+        this.ctx.beginPath();
         this.ctx.moveTo(coordPair[0], coordPair[1]);
         this.ctx.lineTo(this.nextCoordinates[idx][0], this.nextCoordinates[idx][1]);
         this.ctx.lineWidth = this.lineWidth;
