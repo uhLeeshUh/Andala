@@ -115,6 +115,9 @@ class Canvas {
   constructor(id){
     this.canvasElement = document.getElementById(id);
     this.ctx = this.canvasElement.getContext('2d');
+    this.canvasLeftSide = () => this.getCanvasCoords()[0];
+    this.canvasTop = () => this.getCanvasCoords()[1];
+
 
     // this.axisPoint = [400, 325];
     this.axisPoint = [325, 325];
@@ -147,6 +150,13 @@ class Canvas {
     // userInputs.setUserInputListeners();
     this.setUserInputListeners();
 
+  }
+
+  getCanvasCoords(){
+    const canvasPosition = this.canvasElement.getBoundingClientRect();
+    const canvasLeft = canvasPosition.left + window.scrollX;
+    const canvasTop = canvasPosition.top + window.scrollY;
+    return [canvasLeft, canvasTop];
   }
 
   setUserInputListeners(){
@@ -227,9 +237,6 @@ class Canvas {
     }
 
   setDrawingParameters(action, e){
-    console.log(`mouseclick was at ${e.pageX - 395}, ${e.pageY - 108}`);
-    // this.ctx.rect(325,325,100,100);
-    // this.ctx.stroke();
     switch (action) {
       case 'DOWN':
         this.drawing = true;
@@ -243,7 +250,7 @@ class Canvas {
 
   setCoordinates(e, startOrNext){
 
-    let firstPair = [e.pageX - 395, e.pageY - 108];
+    let firstPair = [e.pageX - this.canvasLeftSide(), e.pageY - this.canvasTop()];
     let symmetricPairSet;
     switch(this.symDirection){
       case 'HORIZONTAL':
@@ -267,13 +274,13 @@ class Canvas {
     let symmetricPairX, symmetricPairY, symmetricPairSet;
     switch (axis) {
       case 'HORIZONTAL':
-        symmetricPairX = e.pageX - 395;
-        symmetricPairY = ((this.axisPoint[1] - (e.pageY - 108)) * 2) + e.pageY - 108;
+        symmetricPairX = e.pageX - this.canvasLeftSide();
+        symmetricPairY = ((this.axisPoint[1] - (e.pageY - this.canvasTop())) * 2) + e.pageY - this.canvasTop();
         symmetricPairSet = [[symmetricPairX, symmetricPairY]];
         return { symmetricPairSet };
       case 'VERTICAL':
-        symmetricPairX = ((this.axisPoint[0] - (e.pageX - 395)) * 2) + e.pageX - 395;
-        symmetricPairY = e.pageY - 108;
+        symmetricPairX = ((this.axisPoint[0] - (e.pageX - this.canvasLeftSide())) * 2) + e.pageX - this.canvasLeftSide();
+        symmetricPairY = e.pageY - this.canvasTop();
         symmetricPairSet = [[symmetricPairX, symmetricPairY]];
         return { symmetricPairSet };
       case 'DIAGONAL-RIGHT':
@@ -286,8 +293,8 @@ class Canvas {
   computeRadialSymPairs(e){
     const symmetricPairSet = [];
 
-    const xDistance = (e.pageX - 395 - this.axisPoint[0]);
-    const yDistance = -(e.pageY - 108 - this.axisPoint[1]);
+    const xDistance = (e.pageX - this.canvasLeftSide() - this.axisPoint[0]);
+    const yDistance = -(e.pageY - this.canvasTop() - this.axisPoint[1]);
     const pythagoreanSum = Math.pow(xDistance, 2) + Math.pow(yDistance, 2);
     const radius =  Math.sqrt(pythagoreanSum);
 
