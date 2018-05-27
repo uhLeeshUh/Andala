@@ -116,7 +116,7 @@ class Canvas {
     }
 
   setDrawingParameters(action, e){
-    // console.log(`mouseclick was at ${e.clientX}, ${e.clientY}`);
+    console.log(`mouseclick was at ${e.pageX - 395}, ${e.pageY - 108}`);
     // this.ctx.rect(325,325,100,100);
     // this.ctx.stroke();
     switch (action) {
@@ -132,7 +132,7 @@ class Canvas {
 
   setCoordinates(e, startOrNext){
 
-    let firstPair = [e.clientX, e.clientY];
+    let firstPair = [e.pageX - 395, e.pageY - 108];
     let symmetricPairSet;
     switch(this.symDirection){
       case 'HORIZONTAL':
@@ -145,7 +145,6 @@ class Canvas {
         ({ symmetricPairSet } = this.computeRadialSymPairs(e));
         break;
     }
-
     if (startOrNext === 'START'){
       this.startCoordinates = [firstPair].concat(symmetricPairSet);
     } else {
@@ -157,13 +156,13 @@ class Canvas {
     let symmetricPairX, symmetricPairY, symmetricPairSet;
     switch (axis) {
       case 'HORIZONTAL':
-        symmetricPairX = e.clientX;
-        symmetricPairY = ((this.axisPoint[1] - e.clientY) * 2) + e.clientY;
+        symmetricPairX = e.pageX - 395;
+        symmetricPairY = ((this.axisPoint[1] - (e.pageY - 108)) * 2) + e.pageY - 108;
         symmetricPairSet = [[symmetricPairX, symmetricPairY]];
         return { symmetricPairSet };
       case 'VERTICAL':
-        symmetricPairX = ((this.axisPoint[0] - e.clientX) * 2) + e.clientX;
-        symmetricPairY = e.clientY;
+        symmetricPairX = ((this.axisPoint[0] - (e.pageX - 395)) * 2) + e.pageX - 395;
+        symmetricPairY = e.pageY - 108;
         symmetricPairSet = [[symmetricPairX, symmetricPairY]];
         return { symmetricPairSet };
       case 'DIAGONAL-RIGHT':
@@ -176,8 +175,8 @@ class Canvas {
   computeRadialSymPairs(e){
     const symmetricPairSet = [];
 
-    const xDistance = (e.clientX - this.axisPoint[0]);
-    const yDistance = -(e.clientY - this.axisPoint[1]);
+    const xDistance = (e.pageX - 395 - this.axisPoint[0]);
+    const yDistance = -(e.pageY - 108 - this.axisPoint[1]);
     const pythagoreanSum = Math.pow(xDistance, 2) + Math.pow(yDistance, 2);
     const radius =  Math.sqrt(pythagoreanSum);
 
