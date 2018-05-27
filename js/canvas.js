@@ -8,8 +8,7 @@ class Canvas {
     this.canvasTop = () => this.getCanvasCoords()[1];
 
 
-    // this.axisPoint = [400, 325];
-    this.axisPoint = [325, 325];
+    this.axisPoint = [(this.canvasElement.width) / 2, (this.canvasElement.height) / 2];
     this.symDirection = document.querySelector('.symmetry-selected').dataset.symmetry;
     this.radialOrder = parseInt(document.getElementById('radial-order').value);
 
@@ -101,6 +100,11 @@ class Canvas {
 
   changeRadialOrder(e){
     this.radialOrder = parseInt(e.target.value);
+    const previousSymmetry = document.querySelector('.symmetry-selected');
+    previousSymmetry.className = "";
+    const radialSym = document.getElementById('radial-symmetry');
+    radialSym.className = 'symmetry-selected';
+    this.symDirection = 'RADIAL';
   }
 
   clearCanvas(e){
