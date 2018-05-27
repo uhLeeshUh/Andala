@@ -15,7 +15,9 @@ Access the live site [here](https://aliciaunderhill.github.io/Andala/
 * Clear your canvas with the button at the right
 
 ## Technical Implementation
-The two most complicated components of the application are (1) its canvas auto-calibration relative to user screen size & scroll and (2) its real-time symmetry calculation via conversion of the canvas grid into a Cartesian coordinate plane.
+The two most complicated components of the application are:
+1. Its canvas auto-calibration relative to user screen size & scroll
+2. Its real-time symmetry calculation via conversion of the canvas grid into a Cartesian coordinate plane
 
 ### Canvas auto-calibration
 Since an HTML canvas does not provide mouse coordinates when a user clicks over it, I dynamically calculated canvas coordinates from full window MouseEvent coordinates via the `getCanvasCoords` function. This translates the window's mouse coordinates into canvas coordinates which are agnostic to screen size and window scroll. The result is a precise drawing experience for the user even if s/he scrolls or changes screen size during a drawing session.
@@ -32,7 +34,7 @@ getCanvasCoords(){
 ```
 
 ### Cartesian canvas symmetric calculations
-Since an HTML canvas begins its coordinate system with (0,0) at the top left corner, I translated the canvas grid into a Cartesian plane about the origin. When a user clicks anywhere on the canvas, the distance from the origin is calculated as well as a set of symmetric points which will be simultaneously drawn.
+Since an HTML canvas begins its coordinate system with (0,0) at the top left corner, I translated the canvas grid into a Cartesian plane. When a user clicks anywhere on the canvas, the distance from the origin is calculated as well as a set of symmetric point(s) which will be simultaneously drawn.
 
 In the case of radial symmetry, the first user click calculates an initial angle `theta` about the origin. This, in conjunction with the `radialOrder` -- or number of symmetry slices -- is used to determine equidistantly-spaced points in radians whose canvas coordinates are calculated using trigonometry.
 
