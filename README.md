@@ -1,88 +1,83 @@
-# Andala
+# andala
 
 ## About
-Symmetry is a drawing web application which allows users to create beautiful, symmetrical designs.
+andala is a drawing web application which allows users to create beautiful, symmetrical designs. The app is powered exclusively through vanilla JavaScript DOM manipulation of an HTML canvas element.
 
-## MVP
-* Design grid (HTML table, built with React cell components) sets center and symmetrical axis based on user click
-* Grid cells change to user-designated color when moused over and trigger their symmetric partner cells to change color as well
-* Grid cells know when to stop listening for mouse over when user clicks for the second time
-* User may choose a drawing color
-* User may reset drawing board
-* A directions sidebar will be present
+Access the live site here.
 
-## Wireframe of Symmetry Design
-The cells outlined in green show where the user clicked to start and stop the drawing. Cells 2 and 3 were moused over which triggered their symmetric cells across the Y axis to also render in purple (the user's chosen color).
+(live demo gif here)
 
-![Symmetry Wireframe](https://github.com/AliciaUnderhill/Symmetry/blob/master/images/Symmetry_wireframe.png)
+## How to use andala
+* Choose your initial drawing preferences at the left of the page
+* Begin drawing by clicking into the canvas
+* Change your drawing preferences at any time and continue drawing
+* Clear your canvas with the button at the right
 
-## Technologies Used
-This app will employ Javascript and React to manage intelligent cell rendering.
+## Technical Implementation
+The two most complicated components of the application are (1) its canvas auto-calibration relative to user screen size & scroll and (2) its real-time symmetry calculation via conversion of the canvas grid into a Cartesian coordinate plane.
 
-In addition to the entry file, the project will include the following React components:
-1. `app.jsx`: will hold the app and render Grid, UserInputSidebar and DirectionsSidebar
-2. `user_input_sidebar.jsx`: holds reference to current user drawing color and symmetry direction (both passed via callbacks to App which feeds to Grid). Also holds reset button which triggers a callback to clear grid
-3. `grid.jsx`: holds the HTML table grid of `Cell` components and defines mouseover callbacks to pass down to `Cell`s as props. Also holds local state of mouseoverListening boolean to know when to symmetrically render
-4. `cell.jsx`: holds reference to its own coordinate position and its distance from the axis of symmetry. Changes color when moused over and fires callback to handle render of its symmetric pair
-5. `directions_sidebar.jsx`: holds app directions
+### Canvas auto-calibration
+Since an HTML canvas does not provide mouse coordinates when a user clicks over it, I dynamically calculated canvas coordinates from full window MouseEvent coordinates via the `getCanvasCoords` function. This translates the window's mouse coordinates into canvas coordinates which are agnostic to screen size and window scroll. The result is a precise drawing experience for the user even if s/he scrolls or changes screen size during a drawing session.
 
+```
+// from canvas.js
 
-## Implementation Timeline
+getCanvasCoords(){
+  const canvasPosition = this.canvasElement.getBoundingClientRect();
+  const canvasLeft = canvasPosition.left + window.scrollX;
+  const canvasTop = canvasPosition.top + window.scrollY;
+  return [canvasLeft, canvasTop];
+}
+```
 
-### Day 1, Wed:
-* Build the starting grid, render it in the browser
-* Have cells change color when moused over
-* Have cells change color beginning and ending with a user click
-* Figure out how to assign cells immutable coordinates
+### Cartesian canvas symmetric calculations
+Since an HTML canvas begins its coordinate system with (0,0) at the top left corner, I translated the canvas grid into a Cartesian plane about the origin. When a user clicks anywhere on the canvas, the distance from the origin is calculated as well as a set of symmetric points which will be simultaneously drawn.
 
-* Figure out a way to assign a line of symmetry
-* Figure out how to trigger symmetric line drawing
+In the case of radial symmetry, the first user click calculates an initial angle `theta` about the origin. This, in conjunction with the `radialOrder` -- or number of symmetry slices -- is used to determine equidistantly-spaced points in radians whose canvas coordinates are calculated using trigonometry.
 
-* Figure out a script that selects DOM elements based on their relation to (1) the focal line and (2) the moused over cell
+```
+// from canvas.js
 
-* user will be able to toggle between line of symmetry or radial
-* start with doing horizontal vs. vertical symmetry then implement radial
+computeRadialSymPairs(e){
+  const symmetricPairSet = [];
 
-* user clicks, go to setDrawingParameters function that based on symmetry type, sets this.startCoordinates variable (aka adds start coordinates X number of times)
-* then when user moves the mouse, triggers this.determineDraw event listener, sets this.nextCoordinates array with all the new positions
-* then simply iterate over this.startCoordinates paired with this.nextCoordinates to synchronously draw in tandem
+  const xDistance = (e.pageX - this.canvasLeftSide() - this.axisPoint[0]);
+  const yDistance = -(e.pageY - this.canvasTop() - this.axisPoint[1]);
+  const pythagoreanSum = Math.pow(xDistance, 2) + Math.pow(yDistance, 2);
+  const radius =  Math.sqrt(pythagoreanSum);
 
-for normal symmetry:
-* this.symDirection will dictate calculating this.nextCoordinates based on relation to either X or Y axis
+  let theta;
+  if (xDistance >= 0 && yDistance >= 0){
+    theta = Math.atan(yDistance / xDistance);
+  } else if (xDistance <= 0 && yDistance >= 0){
+    theta = Math.PI - Math.asin(yDistance / radius);
+  } else if (xDistance <= 0 && yDistance <= 0){
+    theta = Math.PI + Math.atan(yDistance / xDistance);
+  } else if (xDistance >= 0 && yDistance <= 0){
+    theta = (2 * Math.PI) - Math.acos(xDistance / radius);
+  }
 
--------
-#NOTES:
-* Figure out rotational symmetry with different orders
-* Include a button for "done", aka grid lines of all blank cells go away
-* Somehow highlight the axis of symmetry as user is drawing, and it goes away when user selects a new axis or clicks the done button
-* Maybe can add on filters at the end?
-* Add an eraser
-* Is there a way to save the drawing? look at toDataUrl
+  const sliceSizeRadians = (2 * Math.PI) / this.radialOrder;
 
+  const thetaPrimes = [];
+  //note: thetaPrimes will not include theta since firstPair coordinates are already known from the user's click
+  for (let i = 1; i <= this.radialOrder; i ++){
+    thetaPrimes.push(theta + (sliceSizeRadians * i));
+  }
 
-* Finalize needed component hierarchy
-* Develop gameplan for how to render symmetric cells upon mousing over the first in a symmetric pair
-* Build `App` and `Grid` component skeletons and render them in the browser
+  thetaPrimes.forEach(angle => {
+    const canvasX = (radius * Math.cos(angle)) + this.axisPoint[0];
+    const canvasY = this.axisPoint[1] - (radius * Math.sin(angle));
+    symmetricPairSet.push([canvasX, canvasY]);
+  });
+  return { symmetricPairSet };
+}
 
-### Day 2, Thurs:
-* Build `Cell` component
-* Test that clicking on a cell sets the axis of symmetry
-* Test that cells will change color when moused over between user clicks
-* Build `Grid` logic to render symmetric cell pairs and test this
-* Format styling of grid
+```
 
-### Day 3, Fri:
-* Build `UserInputSidebar` component to keep track of color and symmetrical axis. Test this.
-* Test that grid can be cleared when user hits reset button
-* Style `UserInputSidebar`
+## Future Features
+In the future, I plan to add the following features:
 
-### Day 4, Sat:
-* Finish any work from previous days
-* Build `DirectionsSidebar`
-* Build radial symmetry feature
-
-## Bonus Features
-* User may select multiple colors
-* User may continue clicking and unclicking to add to their design, and the focal point will remain the same
-* User may choose radial symmetry
-* User may customize grid size
+* User may choose a focal point which is not the origin
+* User may customize canvas size
+* User may draw with circles and other shapes in addition to line drawing
