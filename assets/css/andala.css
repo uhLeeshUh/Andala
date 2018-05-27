@@ -279,6 +279,10 @@ li.canvas-background-selected{
   font-size: 16px;
 }
 
+#radial-order{
+  margin-bottom: 6px;
+}
+
 .symmetry-selected{
   text-decoration: underline;
 }
