@@ -128,13 +128,16 @@ class Canvas {
     this.strokeStyle = document.querySelector('.drawing-color-selected').dataset.color;
 
     this.determineDraw = this.determineDraw.bind(this);
-    // userInputs.toggleBrushColors = userInputs.toggleBrushColors.bind(this);
+    // userInputs.toggleBrushColor = userInputs.toggleBrushColor.bind(this);
     //why was this yelling at me?
-    //canvas.js:20 Uncaught TypeError: Cannot set property 'toggleBrushColors' of undefined
+    //canvas.js:20 Uncaught TypeError: Cannot set property 'toggleBrushColor' of undefined
     // at new Canvas (canvas.js:20)
 
-    this.toggleBrushColors = this.toggleBrushColors.bind(this);
+    this.toggleBrushColor = this.toggleBrushColor.bind(this);
     this.toggleCanvasBackground = this.toggleCanvasBackground.bind(this);
+    this.toggleBrushSize = this.toggleBrushSize.bind(this);
+    this.toggleSymmetryChoice = this.toggleSymmetryChoice.bind(this);
+    this.changeRadialOrder = this.changeRadialOrder.bind(this);
 
     this.canvasElement.addEventListener('mousedown', (e) => this.setDrawingParameters('DOWN', e));
     this.canvasElement.addEventListener('mouseup', (e) => this.setDrawingParameters('UP', e));
@@ -147,13 +150,23 @@ class Canvas {
 
   setUserInputListeners(){
     const brushColors = document.querySelector('.brush-colors');
-    brushColors.addEventListener("click", this.toggleBrushColors);
+    brushColors.addEventListener("click", this.toggleBrushColor);
 
     const canvasBackgrounds = document.querySelector('.canvas-backgrounds');
     canvasBackgrounds.addEventListener("click", this.toggleCanvasBackground);
+
+    const brushSizes = document.querySelector('.brush-sizes');
+    brushSizes.addEventListener("click", this.toggleBrushSize);
+
+    const symmetryChoices = document.querySelector('.symmetry-choices');
+    symmetryChoices.addEventListener("click", this.toggleSymmetryChoice);
+
+    const radialOrder = document.getElementById('radial-order');
+    radialOrder.addEventListener("input", this.changeRadialOrder);
+
   }
 
-  toggleBrushColors(e){
+  toggleBrushColor(e){
     const previousBrush = document.querySelector('.drawing-color-selected');
     previousBrush.className = "";
     e.target.className = 'drawing-color-selected';
@@ -164,9 +177,28 @@ class Canvas {
     const previousBackground = document.querySelector('.canvas-background-selected');
     previousBackground.className = "";
     e.target.className = 'canvas-background-selected';
-    this.canvasElement.setAttribute('style', `background-color:${e.target.dataset.background};`)
+    this.canvasElement.setAttribute('style',
+      `background-color:${e.target.dataset.background};`)
   }
 
+  toggleBrushSize(e){
+    const previousBrushSize = document.querySelector('.brush-size-selected');
+    previousBrushSize.className = "";
+    e.target.className = 'brush-size-selected';
+    this.lineWidth = parseInt(e.target.dataset.brushsize);
+  }
+
+  toggleSymmetryChoice(e){
+    if (e.target.id === 'radial-order') {return;}
+    const previousSymmetry = document.querySelector('.symmetry-selected');
+    previousSymmetry.className = "";
+    e.target.className = 'symmetry-selected';
+    this.symDirection = e.target.dataset.symmetry;
+  }
+
+  changeRadialOrder(e){
+    this.radialOrder = parseInt(e.target.value);
+  }
 
 
   determineDraw(e){

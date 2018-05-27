@@ -1,12 +1,12 @@
 export const setUserInputListeners = () => {
   const brushColors = document.querySelector('.brush-colors');
-  brushColors.addEventListener("click", toggleBrushColors);
+  brushColors.addEventListener("click", toggleBrushColor);
 
   // const canvasBackgrounds = document.querySelector('.canvas-backgrounds');
   // canvasBackgrounds.addEventListener("click", toggleCanvasBackground);
 };
 
-export const toggleBrushColors = (e) => {
+export const toggleBrushColor = (e) => {
   const previousBrush = document.querySelector('.drawing-color-selected');
   previousBrush.className = "";
   e.target.className = 'drawing-color-selected';
