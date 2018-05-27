@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // grid.buildGrid();
 
   const canvas = new Canvas('andala-canvas');
+  // canvas.userInputs.setUserInputListeners();
   // userInputs.setPenColorsListener();
   // const toggleUserInputs = new userInputs();
   // canvas.setupCanvas();

@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // grid.buildGrid();
 
   const canvas = new _canvas__WEBPACK_IMPORTED_MODULE_0__["default"]('andala-canvas');
+  // canvas.userInputs.setUserInputListeners();
   // userInputs.setPenColorsListener();
   // const toggleUserInputs = new userInputs();
   // canvas.setupCanvas();
@@ -108,6 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+// import * as userInputs from './user_inputs';
+
 class Canvas {
   constructor(id){
     this.canvasElement = document.getElementById(id);
@@ -125,6 +128,11 @@ class Canvas {
     this.strokeStyle = document.querySelector('.drawing-color-selected').dataset.color;
 
     this.determineDraw = this.determineDraw.bind(this);
+    // userInputs.toggleBrushColors = userInputs.toggleBrushColors.bind(this);
+    //why was this yelling at me?
+    //canvas.js:20 Uncaught TypeError: Cannot set property 'toggleBrushColors' of undefined
+    // at new Canvas (canvas.js:20)
+
     this.toggleBrushColors = this.toggleBrushColors.bind(this);
     this.toggleCanvasBackground = this.toggleCanvasBackground.bind(this);
 
@@ -132,6 +140,7 @@ class Canvas {
     this.canvasElement.addEventListener('mouseup', (e) => this.setDrawingParameters('UP', e));
     this.canvasElement.addEventListener('mousemove', this.determineDraw);
 
+    // userInputs.setUserInputListeners();
     this.setUserInputListeners();
 
   }
@@ -155,20 +164,16 @@ class Canvas {
     const previousBackground = document.querySelector('.canvas-background-selected');
     previousBackground.className = "";
     e.target.className = 'canvas-background-selected';
-    //finish here
+    this.canvasElement.setAttribute('style', `background-color:${e.target.dataset.background};`)
   }
 
 
 
   determineDraw(e){
-    console.log(`were at determine draw and this.drawing = ${this.drawing}`);
     if (this.drawing){
-      console.log('were setting next coordinates');
       this.setCoordinates(e, 'NEXT');
 
       this.startCoordinates.forEach((coordPair, idx) => {
-        console.log('now were drawing the line');
-        // debugger
         this.ctx.beginPath();
         this.ctx.moveTo(coordPair[0], coordPair[1]);
         this.ctx.lineTo(this.nextCoordinates[idx][0], this.nextCoordinates[idx][1]);
@@ -182,22 +187,17 @@ class Canvas {
     }
 
   setDrawingParameters(action, e){
-    // debugger
-    console.log(`mouseclick was at ${e.clientX}, ${e.clientY}`);
     // console.log(`mouseclick was at ${e.clientX}, ${e.clientY}`);
     // this.ctx.rect(325,325,100,100);
     // this.ctx.stroke();
     switch (action) {
       case 'DOWN':
         this.drawing = true;
-        console.log('drawing is now true');
         this.setCoordinates(e, 'START');
-        // console.log(`starting coordinates are ${this.startingX}, ${this.startingY}`);
-        return;
+        break;
       case 'UP':
         this.drawing = false;
-        console.log(`now drawing is ${this.drawing}`);
-        return;
+        break;
       }
     }
 
@@ -219,10 +219,8 @@ class Canvas {
 
     if (startOrNext === 'START'){
       this.startCoordinates = [firstPair].concat(symmetricPairSet);
-      console.log(`startCoordinates are ${this.startCoordinates}`);
     } else {
       this.nextCoordinates = [firstPair].concat(symmetricPairSet);
-      console.log(`nextCoordinates are ${this.nextCoordinates}`);
     }
   }
 
