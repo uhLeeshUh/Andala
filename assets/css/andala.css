@@ -243,6 +243,7 @@ li.canvas-background-selected{
 
 .brush-size li:hover{
   opacity: 0.75;
+  cursor: pointer;
 }
 
 .brush-size-selected{
@@ -272,6 +273,7 @@ li.canvas-background-selected{
 
 .canvas-symmetry li:hover{
   opacity: 0.75;
+  cursor: pointer;
 }
 
 .canvas-symmetry label{
