@@ -107,6 +107,7 @@ h3{
 
 .drawing-color li:hover{
   opacity: 0.75;
+  cursor: pointer;
 }
 
 li.drawing-color-selected{
@@ -203,6 +204,7 @@ li.drawing-color-selected{
 
 .canvas-background-color li:hover{
   opacity: 0.75;
+  cursor: pointer;
 }
 
 li.canvas-background-selected{
