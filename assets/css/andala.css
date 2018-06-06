@@ -301,12 +301,8 @@ li.canvas-background-selected{
   text-decoration: none;
   font-size: 45px;
   cursor: pointer;
-  color: gray;
+  color: #adb5bd;
   padding: 10px;
-}
-
-.link-list:last-of-type{
-  padding-left: 12px;
 }
 
 #personal-site{
