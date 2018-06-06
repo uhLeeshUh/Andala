@@ -1,7 +1,7 @@
-body{
+main{
   display: flex;
   align-items: stretch;
-  margin-top: 20px 0;
+  margin: 0 0 10px 0;
 }
 
 .canvas{
@@ -289,4 +289,32 @@ li.canvas-background-selected{
 
 .symmetry-selected{
   text-decoration: underline;
+}
+
+/* contact-icons */
+
+.link-list{
+  text-align: center;
+}
+
+.link-list a{
+  text-decoration: none;
+  font-size: 45px;
+  cursor: pointer;
+  color: gray;
+  padding: 10px;
+}
+
+.link-list:last-of-type{
+  padding-left: 12px;
+}
+
+#personal-site{
+  font-size: 40px;
+}
+
+#author{
+  text-align: center;
+  margin: 10px;
+  font-family: 'Cormorant', serif;
 }

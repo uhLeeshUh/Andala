@@ -7,67 +7,79 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/andala.css">
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Cormorant:500" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <script src="./lib/js/bundle.js"></script>
   </head>
   <body>
-    <section class="left-side-bar-selection">
-      <div class="draw-instructions">
-        <h5>Choose and change your settings as you draw:</h5>
-      </div>
-      <div class="drawing-color">
-        <p>Your brush color</p>
-        <ul class="brush-colors">
-          <li id="red-brush" data-color="#FA5858" class=""></li>
-          <li id="orange-brush" data-color="#FACC2E" class=""></li>
-          <li id="yellow-brush" data-color="#F4FA58" class=""></li>
-          <li id="green-brush" data-color="#81F79F" class=""></li>
-          <li id="blue-brush" data-color="#81F7F3" class="drawing-color-selected"></li>
-          <li id="purple-brush" data-color="#DA81F5" class=""></li>
-          <li id="pink-brush" data-color="#F781F3" class=""></li>
-          <li id="black-brush" data-color="black" class=""></li>
-          <li id="white-brush" data-color="white" class=""></li>
-          <li id="gray-brush" data-color="#A4A4A4" class=""></li>
-        </ul>
-      </div>
+    <main>
+      <section class="left-side-bar-selection">
+        <div class="draw-instructions">
+          <h5>Choose and change your settings as you draw:</h5>
+        </div>
+        <div class="drawing-color">
+          <p>Your brush color</p>
+          <ul class="brush-colors">
+            <li id="red-brush" data-color="#FA5858" class=""></li>
+            <li id="orange-brush" data-color="#FACC2E" class=""></li>
+            <li id="yellow-brush" data-color="#F4FA58" class=""></li>
+            <li id="green-brush" data-color="#81F79F" class=""></li>
+            <li id="blue-brush" data-color="#81F7F3" class="drawing-color-selected"></li>
+            <li id="purple-brush" data-color="#DA81F5" class=""></li>
+            <li id="pink-brush" data-color="#F781F3" class=""></li>
+            <li id="black-brush" data-color="black" class=""></li>
+            <li id="white-brush" data-color="white" class=""></li>
+            <li id="gray-brush" data-color="#A4A4A4" class=""></li>
+          </ul>
+        </div>
 
-      <div class="canvas-background-color">
-        <p>Your background color</p>
-        <ul class="canvas-backgrounds">
-          <li id="black-background" data-background="black" class="canvas-background-selected"></li>
-          <li id="white-background" data-background="white" class=""></li>
-        </ul>
+        <div class="canvas-background-color">
+          <p>Your background color</p>
+          <ul class="canvas-backgrounds">
+            <li id="black-background" data-background="black" class="canvas-background-selected"></li>
+            <li id="white-background" data-background="white" class=""></li>
+          </ul>
+        </div>
+
+        <div class="brush-size">
+          <p>Your brush size</p>
+          <ul class="brush-sizes">
+            <li class="" data-brushsize="1">Thin</li>
+            <li class="brush-size-selected" data-brushsize="3">Medium</li>
+            <li class="" data-brushsize="6">Thick</li>
+          </ul>
+        </div>
+
+        <div class="canvas-symmetry">
+          <p>Your desired symmetry</p>
+          <ul class="symmetry-choices">
+            <li id="radial-symmetry" data-symmetry="RADIAL" class="symmetry-selected">Radial</li>
+              <label>Split by
+                <input id="radial-order" type="text" name="radial-order" value="5">
+              </label>
+            <li data-symmetry="HORIZONTAL" class="">Horizontal</li>
+            <li data-symmetry="VERTICAL" class="">Vertical</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="canvas">
+        <h1>andala</h1>
+        <h3>Click anywhere and draw freely.</h3>
+        <canvas id="andala-canvas" width="600" height="600" style="background-color:black"></canvas>
+      </section>
+
+      <section class="right-side-bar-selection">
+        <button id="canvas-reset-button" type="button" name="button">Clear your canvas</button>
+      </section>
+    </main>
+
+    <section class="contact-icons">
+      <div class="link-list">
+        <a href="https://github.com/AliciaUnderhill"><i class="fab fa-github"></i></a>
+        <a id="personal-site" href="http://www.aliciaunderhill.xyz/"><i class="fas fa-laptop"></i></a>
+        <a href="https://www.linkedin.com/in/alicia-underhill-1b605069/"><i class="fab fa-linkedin"></i></a>
       </div>
-
-      <div class="brush-size">
-        <p>Your brush size</p>
-        <ul class="brush-sizes">
-          <li class="" data-brushsize="1">Thin</li>
-          <li class="brush-size-selected" data-brushsize="3">Medium</li>
-          <li class="" data-brushsize="6">Thick</li>
-        </ul>
-      </div>
-
-      <div class="canvas-symmetry">
-        <p>Your desired symmetry</p>
-        <ul class="symmetry-choices">
-          <li id="radial-symmetry" data-symmetry="RADIAL" class="symmetry-selected">Radial</li>
-            <label>Split by
-              <input id="radial-order" type="text" name="radial-order" value="5">
-            </label>
-          <li data-symmetry="HORIZONTAL" class="">Horizontal</li>
-          <li data-symmetry="VERTICAL" class="">Vertical</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="canvas">
-      <h1>andala</h1>
-      <h3>Click anywhere and draw freely.</h3>
-      <canvas id="andala-canvas" width="600" height="600" style="background-color:black"></canvas>
-    </section>
-
-    <section class="right-side-bar-selection">
-      <button id="canvas-reset-button" type="button" name="button">Clear your canvas</button>
+      <p id="author">Created by: Alicia Underhill</p>
     </section>
   </body>
 </html>
