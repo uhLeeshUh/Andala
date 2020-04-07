@@ -3,7 +3,7 @@
 ## About
 andala is a drawing web application which allows users to create beautiful, symmetrical designs. The app is powered through vanilla JavaScript DOM manipulation of an HTML canvas element.
 
-Access the live site [here](https://aliciaunderhill.github.io/Andala/
+Access the live site [here](https://uhLeeshUh.github.io/Andala/
 ).
 
 ## How to use andala
