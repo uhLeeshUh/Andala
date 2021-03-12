@@ -6,6 +6,8 @@ andala is a drawing web application which allows users to create beautiful, symm
 Access the live site [here](https://uhLeeshUh.github.io/Andala/
 ).
 
+<img src="./assets/images/andala_readme_example.png" alt="Example andala drawing" width="250px" height="250px">
+
 ## How to use andala
 * Choose your initial drawing preferences at the left of the page
 * Begin drawing by clicking into the canvas
