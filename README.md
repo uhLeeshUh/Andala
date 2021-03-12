@@ -48,13 +48,17 @@ computeRadialSymPairs(e){
   const radius =  Math.sqrt(pythagoreanSum);
 
   let theta;
-  if (xDistance >= 0 && yDistance >= 0){
+  if (xDistance > 0 && yDistance >= 0){
+    // first quadrant
     theta = Math.atan(yDistance / xDistance);
   } else if (xDistance <= 0 && yDistance >= 0){
+    // second quadrant
     theta = Math.PI - Math.asin(yDistance / radius);
-  } else if (xDistance <= 0 && yDistance <= 0){
+  } else if (xDistance < 0 && yDistance <= 0){
+    // third quadrant
     theta = Math.PI + Math.atan(yDistance / xDistance);
   } else if (xDistance >= 0 && yDistance <= 0){
+    // fourth quadrant
     theta = (2 * Math.PI) - Math.acos(xDistance / radius);
   }
 
