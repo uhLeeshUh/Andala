@@ -52,6 +52,12 @@ h3{
   border-radius: 10px;
 }
 
+#canvas-save-button{
+  height: 35px;
+  font-size: 17px;
+  border-radius: 10px;
+}
+
 /* left sidebar */
 
 .left-side-bar-selection{
