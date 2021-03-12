@@ -35,7 +35,6 @@ h3{
 
 .right-side-bar-selection{
   margin-top: 125px;
-  /* margin-left: 35px; */
   width: 25%;
 }
 
@@ -43,16 +42,6 @@ h3{
   margin-left: 10%;
   margin-right: 20%;
   font-family: 'Cormorant', serif;
-  font-size: 18px;
-}
-
-#canvas-reset-button{
-  height: 35px;
-  font-size: 17px;
-  border-radius: 10px;
-}
-
-#canvas-save-button{
   height: 35px;
   font-size: 17px;
   border-radius: 10px;
@@ -64,16 +53,9 @@ h3{
   margin-top: 125px;
   font-family: 'Cormorant', serif;
   font-size: 18px;
-  /* margin-right: 50px;
-  margin-left: 50px; */
   width: 25%;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* margin-left: auto; */
-  /* margin-right: 0; */
-  /* padding-left: 15%; */
-  /* padding-left: 30px; */
 }
 
 .left-side-bar-selection div{
@@ -94,15 +76,12 @@ h3{
 
 .drawing-color{
   display: flex;
-  /* margin-top: 30px; */
 }
 
 .drawing-color ul{
   display: flex;
   flex-wrap: wrap;
-  /* height: 50px; */
   width: 120px;
-  /* margin-left: 15px; */
 }
 
 .drawing-color li{
@@ -181,7 +160,6 @@ li.drawing-color-selected{
   width: 20px;
   background-color: white;
   border-radius: 3px;
-  /* border: 0.5px solid gray; */
 }
 
 #gray-brush{
@@ -193,7 +171,6 @@ li.drawing-color-selected{
 
 .canvas-background-color{
   display: flex;
-  /* align-items: flex-start; */
   margin-top: 30px;
 }
 
@@ -222,7 +199,6 @@ li.canvas-background-selected{
   width: 20px;
   background-color: white;
   border-radius: 3px;
-  /* border: 0.5px solid gray; */
 }
 
 #black-background{
