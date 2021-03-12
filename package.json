@@ -1,14 +1,13 @@
 {
-  "name": "Symmetry",
+  "name": "andala",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Symmetrical drawing tool for user-generated web art",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --mode=development --watch"
   },
   "keywords": [],
-  "author": "",
+  "author": "uhLeeshUh",
   "license": "ISC",
   "dependencies": {
     "webpack": "^4.8.3",
