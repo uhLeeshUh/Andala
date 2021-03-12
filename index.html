@@ -86,4 +86,13 @@
       <p id="author">Created by: Alicia Underhill</p>
     </section>
   </body>
+  <script>
+    const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    // html canvas needs to begin with set size, so reduce it if on a mobile device
+    if (isMobileDevice) {
+      const canvasElement = document.getElementById("andala-canvas");
+      canvasElement.setAttribute('width', '400');
+      canvasElement.setAttribute('height', '400');
+    }
+  </script>
 </html>
