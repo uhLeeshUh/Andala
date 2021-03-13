@@ -1,13 +1,16 @@
-main{
+main {
   display: flex;
   align-items: stretch;
-  margin: 0 0 10px 0;
+  margin: 3% 5% 1% 5%;
+}
+
+main section {
+  display: flex;
+  flex-direction: column;
 }
 
 .canvas{
-  margin-right: 50px;
   width: 50%;
-  margin: auto;
 }
 
 #andala-canvas{
@@ -22,6 +25,7 @@ h1{
   text-align: center;
   font-family: 'Alegreya Sans', sans-serif;
   margin-bottom: -7px;
+  margin-top: 10px;
 }
 
 h3{
@@ -34,44 +38,45 @@ h3{
 /* right sidebar */
 
 .right-side-bar-selection{
-  margin-top: 125px;
   width: 25%;
+  align-items: center;
 }
 
 .right-side-bar-selection button{
-  margin-left: 10%;
-  margin-right: 20%;
   font-family: 'Cormorant', serif;
   height: 35px;
   font-size: 17px;
   border-radius: 10px;
+  border: 1px solid black;
+}
+
+#canvas-reset-button, #download {
+  width: 50%;
+}
+
+#canvas-save-button {
+  width: 100%;
 }
 
 /* left sidebar */
 
 .left-side-bar-selection{
-  margin-top: 125px;
   font-family: 'Cormorant', serif;
   font-size: 18px;
   width: 25%;
-  display: flex;
-  flex-direction: column;
 }
 
 .left-side-bar-selection div{
-  margin-right: 10%;
-  margin-left: 20%;
   justify-content: space-between;
+}
+
+.right-side-bar-selection, .left-side-bar-selection {
+  padding: 0 3%;
 }
 
 .draw-instructions{
   margin-bottom: 45px;
   font-size: 19px;
-}
-
-.left-side-bar-selection p{
-  width: 130px;
-  margin-right: 15px;
 }
 
 .drawing-color{
@@ -295,4 +300,21 @@ li.canvas-background-selected{
   text-align: center;
   margin: 10px;
   font-family: 'Cormorant', serif;
+}
+
+/* support mobile */
+
+@media screen and (max-width: 992px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .canvas, .left-side-bar-selection, .right-side-bar-selection {
+    width: 50%;
+  } 
+  
+  .left-side-bar-selection, .right-side-bar-selection {
+    margin: 40px 0;
+  }
 }
