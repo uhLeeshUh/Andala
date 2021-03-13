@@ -11,6 +11,10 @@
     <script src="./lib/js/bundle.js"></script>
   </head>
   <body>
+    <header>
+      <h1>andala</h1>
+      <h3>Click anywhere and draw freely.</h3>
+    </header>
     <main>
       <section class="left-side-bar-selection">
         <div class="draw-instructions">
@@ -63,8 +67,6 @@
       </section>
 
       <section class="canvas">
-        <h1>andala</h1>
-        <h3>Click anywhere and draw freely.</h3>
         <canvas id="andala-canvas" width="600" height="600" style="background-color:black"></canvas>
       </section>
 
@@ -88,12 +90,18 @@
   </body>
   <script>
     const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    // html canvas needs to begin with set size, so reduce it if on a mobile device
     if (isMobileDevice) {
+      // html canvas needs to begin with set size, so reduce it if on a mobile device
       const canvasElement = document.getElementById("andala-canvas");
       canvasElement.setAttribute('width', '400');
       canvasElement.setAttribute('height', '400');
+      // handle column ordering for mobile
+      const canvasSection = document.querySelector(".canvas");
+      const settingsSection = document.querySelector(".left-side-bar-selection");
+      const parent = document.querySelector("main");
+      parent.insertBefore(canvasSection, settingsSection);  
     }
+
   </script>
   <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="uhLeeshUh" data-description="Support me on Buy me a coffee!" data-message="Thanks so much for coming to my site! If you've enjoyed what I built, I'd happily accept a few bucks to fuel my coffee habit :)" data-color="#F471FF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 </html>
